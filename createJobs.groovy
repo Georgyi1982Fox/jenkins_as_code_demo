@@ -7,7 +7,7 @@ pipelineJob('pipelineJob') {
         }
     }
 }
-pipelineJob('taskService_new') {
+pipelineJob('taskService') {
     definition {
         cpsScm {
             scm {
