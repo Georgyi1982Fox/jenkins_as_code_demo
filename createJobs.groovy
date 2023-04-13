@@ -13,7 +13,7 @@ pipelineJob('taskService') {
             scm {
                 git {
                     remote {
-                        url 'https://github.com/Georgyi1982Fox/taskservice_new.git'
+                        url 'https://github.com/Georgyi1982Fox/springboot-jenkins-sample.git'
                     }
                     branch 'main'
                 }
