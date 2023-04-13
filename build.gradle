@@ -1,19 +1,21 @@
 plugins {
-    id 'java'
+    id 'base'
+    id 'com.palantir.docker' version '0.35.0'
+    id 'com.palantir.docker-run' version '0.35.0'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+project.version = scmVersion.version
 
-repositories {
-    mavenCentral()
+docker {
+    name "${project.name}:${project.version}"
+    files "plugins.txt", "seedJob.xml"
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
+dockerRun {
+    name "${project.name}"
+    image "${project.name}:${project.version}"
+    ports '8087:8080'
+    clean true
+    daemonize false
 }
